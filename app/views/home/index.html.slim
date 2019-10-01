@@ -1,0 +1,29 @@
+.col-md-12.mt-3.mb-2
+  = form_tag search_url, method: :post do
+    .row
+      .col-xs-3
+        = text_field_tag "search[word]",
+                     params[:search].present? ? params[:search][:word] : '',
+                     class: 'form-control form-group mr-2', id: 'word',
+                     placeholder: 'Слово'
+
+      .col-xs-3.ml-2
+        = text_field_tag "search[count]",
+                     params[:search].present? ? params[:search][:count] : '',
+                     class: 'form-control form-group mr-2', id: 'count',
+                     placeholder: 'Количество'
+      .col-xs-3.ml-2
+      .col-xs-3
+    .row
+      .col-xs-12
+        = submit_tag "Search", class: 'btn btn-primary'
+
+table.table.table-striped
+  thead
+    tr
+      th{scope="col"} Слово
+      th{scope="col"} Коэффициент
+
+  tbody
+    - words.each do |word|
+      = render 'home/item', item: word
