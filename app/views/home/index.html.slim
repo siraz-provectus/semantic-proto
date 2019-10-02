@@ -1,5 +1,5 @@
 .col-md-12.mt-3.mb-2
-  = form_tag search_url, method: :post do
+  = form_tag(search_path, method: "post") do
     .row
       .col-xs-3
         = text_field_tag "search[word]",
