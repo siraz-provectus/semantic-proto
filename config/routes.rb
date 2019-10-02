@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   controller :home do
     post 'words', action: :search
   end
+
+  get "*path" => redirect("/")
 end
