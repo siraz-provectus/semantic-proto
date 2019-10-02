@@ -8,7 +8,7 @@ set :pty, true
 set :use_sudo,        false
 # set :assets_roles, [:assets]
 
-set :linked_files, %w[.env]
+set :linked_files, %w[.env config/secrets.yml]
 set :linked_dirs,  %w[log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads node_modules client]
 
 # Default value for default_env is {}
