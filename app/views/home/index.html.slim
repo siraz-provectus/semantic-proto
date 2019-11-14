@@ -1,4 +1,11 @@
 .col-md-12.mt-3.mb-2
+  #vk_allow_messages_from_community
+  script src="https://vk.com/js/api/openapi.js?162" type="text/javascript"
+  /! VK Widget
+  javascript:
+    VK.Widgets.AllowMessagesFromCommunity("vk_allow_messages_from_community", {height: 30}, 188722768);
+
+.col-md-12.mt-3.mb-2
   = form_tag(words_path, method: "post") do
     .row
       .col-xs-3

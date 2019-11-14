@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     post 'words', action: :search
   end
 
+  resources :callbacks, only: :create
+
   get "*path" => redirect("/")
 end
