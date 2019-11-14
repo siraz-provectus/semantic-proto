@@ -4,6 +4,6 @@ class CallbacksController < ApplicationController
   def create
     return head :ok if params[:secret] != ENV["VK_SECRET"]
 
-    head :ok
+    render json: 'ok'
   end
 end
