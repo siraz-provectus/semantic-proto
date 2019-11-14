@@ -1,5 +1,9 @@
 class CallbacksController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
+
   def create
-    render json: "5c5811e6"
+    return head :ok if params[:secret] != ENV["VK_SECRET"]
+
+    head :ok
   end
 end
