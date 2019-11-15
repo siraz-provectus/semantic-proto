@@ -23,13 +23,16 @@ class VkService
         [{"action": {"type": "text", "label": "Вот так", "payload": {"question": 1, "answer": 1}}, "color": "primary"},
         {"action": {"type": "text", "label": "По другому", "payload": {"question": 1, "answer": 2}}, "color": "primary"}]]}
 
+    payload = {"special_field": question.special_field}
+
     toSend = {
-      "user_id": "22032578", "random_id": random_id,
-      "peer_id": "22032578",
-      "message": "Как правильно?",
-      "v": "5.101", "access_token": ENV["VK_TOKEN"],
-      "keyboard": keyboard.to_json
+      "user_id": user_id, "random_id": random_id,
+      "peer_id": user_id,
+      "message": question.description,
+      "v": "5.101", "access_token": ENV["VK_TOKEN"]
     }
+
+    toSend["payload"] = payload.to_json
 
     req.set_form_data(toSend)
     response = https.request(req)
