@@ -9,20 +9,20 @@ class CallbacksController < ApplicationController
       profile = Profile.find_by(uid: params['type'] == 'message_new' ? message['from_id'] : message['user_id']) ||
                 Profile.create(uid: params['type'] == 'message_new' ? message['from_id'] : message['user_id'])
 
-      quize = Quize.first
+      quize = Quiz.first
       service = VkService.new
 
       if profile.first_name.blank?
-        question = quize.question.first
+        question = quize.questions.first
         service.message(profile.uid, question)
       elsif profile.first_name.blank?
-        question = quize.question.first(2).last
+        question = quize.questions.first(2).last
         service.message(profile.uid, question)
       elsif profile.age.blank?
-        question = quize.question.first(3).last
+        question = quize.questions.first(3).last
         service.message(profile.uid, question)
       elsif profile.city.blank?
-        question = quize.question.first(4).last
+        question = quize.questions.first(4).last
         service.message(profile.uid, question)
       end
     end
