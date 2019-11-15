@@ -1,0 +1,18 @@
+.container
+  .h3.mt-2
+    | Список Опросов
+
+  .mt-2.mb-2.justify-content-end.ml-auto
+    = link_to 'Добавить опрос', new_admin_quize_url, class: 'btn btn-primary'
+
+  table.table.table-striped
+    thead
+      tr
+        th{scope="col"} #
+        th{scope="col"} Название
+        th{scope="col"} Приоритет
+        th{scope="col"}
+
+    tbody
+    - quizes.each do |quiz|
+      = render 'item', item: quiz

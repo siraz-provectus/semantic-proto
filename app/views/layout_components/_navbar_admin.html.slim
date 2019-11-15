@@ -1,0 +1,14 @@
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+  - if current_admin_admin_user.present?
+    .collapse.navbar-collapse
+      div.navbar-nav
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            = link_to 'Соискатели', admin_profiles_url, class: 'nav-link'
+          li.nav-item
+            = link_to 'Опросы', admin_quizes_url, class: 'nav-link'
+    div.collapse.navbar-collapse.mr-5.pr-5
+      div.navbar-nav.ml-auto
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            = link_to 'Выйти', destroy_admin_admin_user_session_url, class: 'nav-link', method: :delete

@@ -1,0 +1,20 @@
+.container
+  .h3.mt-2
+    | Список Соискателей
+
+  = render 'search_form'
+
+  table.table.table-striped
+    thead
+      tr
+        th{scope="col"} #
+        th{scope="col"} UID
+        th{scope="col"} Имя
+        th{scope="col"} Фамилия
+        th{scope="col"} Возраст
+        th{scope="col"} Город
+        th{scope="col"}
+
+    tbody
+    - profiles.each do |profile|
+      = render 'item', item: profile

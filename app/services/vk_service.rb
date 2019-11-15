@@ -20,8 +20,8 @@ class VkService
     random_id = rand(9223372036854775807)
 
     keyboard = { "one_time": true, "buttons": [
-        [{"action": {"type": "text", "label": "1"}, "color": "primary"},
-        {"action": {"type": "text", "label": "2"}, "color": "primary"}]]}
+        [{"action": {"type": "text", "label": "Вот так", "payload": {"question": 1, "answer": 1}}, "color": "primary"},
+        {"action": {"type": "text", "label": "По другому", "payload": {"question": 1, "answer": 2}}, "color": "primary"}]]}
 
     toSend = {
       "user_id": "22032578", "random_id": random_id,

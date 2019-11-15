@@ -1,0 +1,15 @@
+.container
+  h1
+    | Вопрос
+  = form_for(question, url: admin_quize_questions_url(quize_id: quize.id)) do |f|
+    .form-row.pl-2.mb-2
+      .form-group.col-md-12
+        = f.label :description, 'Вопрос'
+        = f.text_field :description, class: "form-control #{question.errors[:description].present? ? 'is-invalid' : ''}", required: true
+      .form-group.col-md-12
+        = f.label :priority, 'Приоритет'
+        = f.number_field :priority, class: "form-control #{question.errors[:priority].present? ? 'is-invalid' : ''}", required: true
+
+    .form-row
+      .form-group
+        = f.submit 'Сохранить', class: 'btn btn-primary'

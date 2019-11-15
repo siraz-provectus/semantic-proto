@@ -1,0 +1,15 @@
+tr
+  th{scope="row"}
+    = item.id
+  td
+    = item.uid
+  td
+    = item.first_name
+  td
+    = item.last_name
+  td
+    = item.age
+  td
+    = item.city
+  td
+    = link_to 'Подробнее', admin_profile_url(item)

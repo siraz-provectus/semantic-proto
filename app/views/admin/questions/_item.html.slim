@@ -1,0 +1,9 @@
+tr
+  th{scope="row"}
+    = item.id
+  td
+    = item.description
+  td
+    = item.priority
+  td
+    = link_to 'Подробнее', admin_quize_question_url(quize_id: quiz.id, id: item.id)

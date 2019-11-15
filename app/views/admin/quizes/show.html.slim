@@ -1,0 +1,40 @@
+.container-fluid
+  .row.mt-2
+    h3
+      | Данные опроса
+  .row
+    .col-8
+      .row
+        .col-4
+          | Название:
+        .col-8
+          = quiz.title
+      .row
+        .col-4
+          | Приоритет:
+        .col-8
+          = quiz.priority
+
+    .col-4
+      .row.mb-2
+        = link_to 'Вернуться в список опросов', admin_quizes_url, class: 'btn btn-secondary'
+
+
+.container-fluid
+  .h3.mt-2
+    | Список Вопросов
+
+  .mt-2.mb-2.justify-content-end.ml-auto
+    = link_to 'Добавить вопрос', new_admin_quize_question_url(quize_id: quiz.id), class: 'btn btn-primary'
+
+  table.table.table-striped
+    thead
+      tr
+        th{scope="col"} #
+        th{scope="col"} Вопрос
+        th{scope="col"} Приоритет
+        th{scope="col"}
+
+    tbody
+    - questions.each do |question|
+      = render 'admin/questions/item', item: question
