@@ -5,8 +5,9 @@ class CallbacksController < ApplicationController
     return head :ok if params[:secret] != ENV["VK_SECRET"]
 
     if params['type'] == 'message_new' || params['type'] == 'message_allow'
-      message = params['object']['message']
-      profile = Profile.find_by(uid: message['from_id']) || Profile.create(uid: message['from_id'])
+      message = params['type'] == 'message_new' ? params['object']['message'] : params['object']
+      profile = Profile.find_by(uid: params['type'] == 'message_new' ? message['from_id'] : message['user_id']) ||
+                Profile.create(uid: params['type'] == 'message_new' ? message['from_id'] : message['user_id'])
 
       quize = Quize.first
       service = VkService.new
