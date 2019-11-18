@@ -28,9 +28,11 @@ class CallbacksController < ApplicationController
       end
     elsif params['type'] == 'message_reply'
       message = params['object']
-      if message['payload']['type'] == 'bot'
+      payload = JSON.parse(message['payload'])
+
+      if payload['type'] == 'bot'
         profile = Profile.find_by(uid: message['peer_id'])
-        profile.bot_messages.create!(message_id: message['id'], question_id: message['payload']['question_id'])
+        profile.bot_messages.create!(message_id: message['id'], question_id: payload['question_id'])
       end
     end
 
