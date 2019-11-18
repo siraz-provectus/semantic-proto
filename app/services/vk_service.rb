@@ -20,10 +20,10 @@ class VkService
     random_id = rand(9223372036854775807)
 
     keyboard = { "one_time": true, "buttons": [
-        [{"action": {"type": "text", "label": "Вот так", "payload": {"question": 1, "answer": 1}}, "color": "primary"},
-        {"action": {"type": "text", "label": "По другому", "payload": {"question": 1, "answer": 2}}, "color": "primary"}]]}
+        [{"action": {"type": "text", "label": "Вот так", "payload": {"question_id": 1, "answer": 1}}, "color": "primary"},
+        {"action": {"type": "text", "label": "По другому", "payload": {"question_id": 1, "answer": 2}}, "color": "primary"}]]}
 
-    payload = {"special_field": question.special_field}
+    payload = {"question_id": question.id, "special_field": question.special_field, "type": "bot"}
 
     toSend = {
       "user_id": user_id, "random_id": random_id,
@@ -33,6 +33,7 @@ class VkService
     }
 
     toSend["payload"] = payload.to_json
+    toSend["keyboard"] = keyboard.to_json if question.answers.present?
 
     req.set_form_data(toSend)
     response = https.request(req)
